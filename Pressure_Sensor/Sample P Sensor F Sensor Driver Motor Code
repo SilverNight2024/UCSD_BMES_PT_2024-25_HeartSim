@@ -86,23 +86,12 @@ float readPressureSensor(int channel) {
 void moveMotor() {
   // Move motor forward (clockwise)
   digitalWrite(dirPin, HIGH); // Set direction
-  for (int x = 0; x < 800; x++) { // Move 800 steps forward
+  for (int x = 0; x < 400; x++) { // Move 400 steps forward
     digitalWrite(stepPin, HIGH);
-    delayMicroseconds(500);
+    delayMicroseconds(1458); // 70rot/60s / 400steps/rot / 2 parts = .001458s/step*part
     digitalWrite(stepPin, LOW);
-    delayMicroseconds(500);
+    delayMicroseconds(1458);
   }
-  delay(1000); // Pause for 1 second
-
-  // Move motor backward (counterclockwise)
-  digitalWrite(dirPin, LOW); // Change direction
-  for (int x = 0; x < 800; x++) { // Move 800 steps backward
-    digitalWrite(stepPin, HIGH);
-    delayMicroseconds(500);
-    digitalWrite(stepPin, LOW);
-    delayMicroseconds(500);
-  }
-  delay(1000); // Pause for 1 second
 }
 
 void loop() {
